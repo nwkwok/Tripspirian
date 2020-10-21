@@ -22,11 +22,12 @@ app.use('/users/trips', trips)
 const events = require('./routes/events')
 app.use('/users/trips/events', events)
 
-///////// TRIPSPIRIAN HOME ROUTE /////////
+const login = require('./routes/login')
+app.use('/login', login)
 
-app.get('/', (req, res) => {
-    res.send("Tripspirian Home");
-})
+const register = require('./routes/register')
+app.use('/register', register)
+
 
 
 ///////// EXPRESS PORT /////////

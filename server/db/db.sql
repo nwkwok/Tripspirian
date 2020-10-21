@@ -5,7 +5,7 @@ CREATE TABLE users (
     f_name varchar(20) NOT NULL,
     l_name varchar(20) NOT NULL,
     email varchar(50) NOT NULL,
-    password varchar(50) NOT NULL
+    password varchar(128) NOT NULL
 );
 
 CREATE TABLE trip (
