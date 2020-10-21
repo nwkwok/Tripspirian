@@ -1,7 +1,7 @@
-const { Router } = require('express');
 const express = require('express')
 const route = express.Router();
 const pool = require('../db/db');
+const bcrypt = require('bcrypt')
 
 
 // GET ALL USERS
@@ -34,14 +34,22 @@ route.get('/:id', async (req, res) => {
 })
 
 // UPDATE USER
-// route.update('/:id', async (req, res) => {
-//     try {
-//         const { id } = req.params,
-//         const { f_name, l_name, email, password } = req.body
-//     } catch (err) {
-//         console.error(err.message)        
-//     }
-// })
+route.put('/:id', async (req, res) => {
+    try {
+        const { f_name, l_name, email, password } = req.body;
+        const { id } = req.params;
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const updateUser = await pool.query(
+            'UPDATE users SET f_name = $1, l_name = $2, email = $3, password = $4 WHERE id = $5 RETURNING *',
+            [f_name, l_name, email, hashedPassword, id]
+        );
+
+        res.status(200).json(updateUser.rows);
+        
+    } catch (err) {
+        console.error(err.message)        
+    }
+})
 
 // DELETE USER
 route.delete('/:id', async (req, res) => {
