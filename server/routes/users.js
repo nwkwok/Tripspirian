@@ -1,3 +1,4 @@
+const { Router } = require('express');
 const express = require('express')
 const route = express.Router();
 const pool = require('../db/db');
@@ -17,12 +18,45 @@ route.get('/', async (req, res) => {
     })
 
 // GET A USER
+route.get('/:id', async (req, res) => {
+    try {
+        const { id } = req.params
+        const getUserById = await pool.query(
+            'SELECT * FROM users WHERE id = $1',
+            [id]
+        );
+        
+        res.status(200).json(getUserById.rows);
 
+    } catch (err) {
+        console.error(err.message)
+    }
+})
 
 // UPDATE USER
-
+// route.update('/:id', async (req, res) => {
+//     try {
+//         const { id } = req.params,
+//         const { f_name, l_name, email, password } = req.body
+//     } catch (err) {
+//         console.error(err.message)        
+//     }
+// })
 
 // DELETE USER
+route.delete('/:id', async (req, res) => {
+    try {
+        const { id } = req.params
+        const deleteUser = await pool.query(
+            'DELETE FROM users WHERE id = $1 RETURNING *',
+            [id]
+        );
+        res.json('User Deleted')
+    } catch (err) {
+        console.error(err.message)
+    }
+})
+
 
 
 
