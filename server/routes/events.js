@@ -2,6 +2,9 @@ const express = require('express')
 const route = express.Router();
 const pool = require('../db/db');
     
+// CREATE A NEW EVENT
+
+
 // GET ALL EVENTS
     route.get('/', async (req, res) => {
         try {
@@ -15,6 +18,13 @@ const pool = require('../db/db');
             }
         })
 
+// GET AN EVENT
+
+
+// UPDATE EVENT
+
+
+// DELETE EVENT
 
 module.exports = route;
         

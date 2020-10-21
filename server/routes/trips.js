@@ -2,6 +2,10 @@ const express = require('express');
 const route = express.Router();
 const pool = require('../db/db');
 
+
+// CREATE A TRIP
+
+
 // GET ALL TRIPS
 route.get('/', async (req, res) => {
     try {
@@ -14,5 +18,13 @@ route.get('/', async (req, res) => {
         console.error(err.message);
         }
     })
+
+// GET A TRIP
+
+
+// UPDATE TRIP
+
+
+// DELETE TRIP
 
 module.exports = route;

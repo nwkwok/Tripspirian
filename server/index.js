@@ -11,6 +11,7 @@ app.use(express.json());
 app.use(cors());
 app.use(morgan('tiny'));
 
+
 ///////// EXPRESS ROUTER /////////
 const users = require('./routes/users')
 app.use('/users', users)
@@ -21,6 +22,11 @@ app.use('/users/trips', trips)
 const events = require('./routes/events')
 app.use('/users/trips/events', events)
 
+///////// TRIPSPIRIAN HOME ROUTE /////////
+
+app.get('/', (req, res) => {
+    res.send("Tripspirian Home");
+})
 
 
 ///////// EXPRESS PORT /////////
