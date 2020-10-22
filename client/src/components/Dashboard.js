@@ -5,7 +5,6 @@
 
     const [name, setName] = useState("")
 
-
     async function getName() {
         try {
             const response = await fetch('http://localhost:3000/dashboard/', {
