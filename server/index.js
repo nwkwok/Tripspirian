@@ -22,14 +22,10 @@ app.use('/trips', trips)
 const events = require('./routes/events')
 app.use('/events', events)
 
-const login = require('./routes/login')
-app.use('/', login) // '/login' specified in route file for validinfo.js purposes
-
-const register = require('./routes/register')
-app.use('/', register) // '/register' specified in route file for validinfo.js purposes
+const jwtAuth = require('./routes/jwtAuth')
+app.use('/', jwtAuth) // 'login' and 'register' routes inside jwtAuth for validation purposes
 
 ///////// POST LOG-IN ///////// 
-
 
 // Dashboard
 // Trip Hub
