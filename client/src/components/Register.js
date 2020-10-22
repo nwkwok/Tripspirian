@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react'
- 
-const Register = () => {
+import { Link } from 'react-router-dom' 
+
+const Register = (props) => {
 
     const [inputs, setInputs] = useState({
         f_name: "",
@@ -27,11 +28,15 @@ const Register = () => {
                 body: JSON.stringify(body)
             });
             const parseResponse = await response.json();
+
+            //set token after register new user
+            localStorage.setItem('token', parseResponse.token)
+            props.setAuth(true);
             console.log(parseResponse)
         } catch (err) {
             console.err(err.message)
-            
         }
+
     }
     return (
         <Fragment>
@@ -66,7 +71,7 @@ const Register = () => {
                     onChange={handleChange}
                     value={password}/>
                 <button className='btn btn-success btn-block'>Submit</button>
-
+                <span>Already have an account? </span><Link to='/login'>Login here</Link>
             </form>
         </Fragment>
     )

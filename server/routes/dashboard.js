@@ -12,8 +12,8 @@ route.get('/', authorization, async (req,res) => {
             [req.user]
         );
         res.json({
-            'First Name': user.rows[0].f_name,
-            'Last Name': user.rows[0].l_name});
+            'f_name': user.rows[0].f_name,
+            'l_name': user.rows[0].l_name});
 
     } catch (err) {
         console.error(err.message)
