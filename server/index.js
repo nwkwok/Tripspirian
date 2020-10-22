@@ -28,9 +28,6 @@ app.use('/login', login)
 const register = require('./routes/register')
 app.use('/register', register)
 
-const jwtAuth = require('./routes/jwtAuth')
-app.use('/auth', jwtAuth);
-
 ///////// POST LOG-IN ///////// 
 
 
