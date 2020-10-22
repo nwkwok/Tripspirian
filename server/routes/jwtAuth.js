@@ -17,7 +17,7 @@ route.post('/register', validInfo, async (req, res) => {
     )
 
     if(user.rows.length !== 0) {
-        return res.status(401).send('User already exists')
+        return res.status(401).json('User already exists')
     }
 
     const hashedPassword = await bcrypt.hash(password, 10)

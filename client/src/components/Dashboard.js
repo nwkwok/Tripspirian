@@ -1,4 +1,5 @@
  import React, { Fragment, useState, useEffect } from 'react'
+ import {toast} from 'react-toastify'
  
  const Dashboard = (props) => {
 
@@ -27,6 +28,7 @@
         e.preventDefault();
         localStorage.removeItem('token')
         props.setAuth(false);
+        toast.warning("Logged out successfully!");
 
     }
 
