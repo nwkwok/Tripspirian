@@ -1,9 +1,10 @@
 const express = require('express');
-const validInfo = require('../middleware/validInfo')
 const route = express.Router();
 const pool = require('../db/db');
 const bcrypt = require('bcrypt');
 const jwtGenerator = require('../utils/jwtGenerator')
+const validInfo = require('../middleware/validInfo')
+const authorization = require('../middleware/authorization')
 
 // CREATE/REGISTER NEW USER
 route.post('/register', validInfo, async (req, res) => {
@@ -58,8 +59,18 @@ route.post('/login', validInfo, async (req, res) => {
             
     } catch (err) {
         console.error(err.message)
+        res.status(500).send("Server error")
     }
 
+})
+
+route.get('/is-verify', authorization, async(req, res)=> {
+    try {
+        res.json(true)
+    } catch (err) {
+        console.error(err.message)
+        res.status(500).send("Server error")
+    }
 })
 
 

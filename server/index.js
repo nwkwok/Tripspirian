@@ -13,23 +13,11 @@ app.use(morgan('tiny'));
 
 
 ///////// EXPRESS ROUTER /////////
-const users = require('./routes/users')
-app.use('/users', users)
-
-const trips = require('./routes/trips')
-app.use('/trips', trips)
-
-const events = require('./routes/events')
-app.use('/events', events)
-
-const jwtAuth = require('./routes/jwtAuth')
-app.use('/', jwtAuth) // 'login' and 'register' routes inside jwtAuth for validation purposes
-
-///////// POST LOG-IN ///////// 
-
-// Dashboard
-// Trip Hub
-
+app.use('/users', require('./routes/users'));
+app.use('/trips', require('./routes/trips'));
+app.use('/events', require('./routes/events'));
+app.use('/auth', require('./routes/jwtAuth'));
+app.use('/dashboard', require('./routes/dashboard'));
 
 ///////// EXPRESS PORT /////////
 app.listen(port, () => {
