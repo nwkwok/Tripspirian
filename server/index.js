@@ -23,10 +23,10 @@ const events = require('./routes/events')
 app.use('/events', events)
 
 const login = require('./routes/login')
-app.use('/login', login)
+app.use('/', login) // '/login' specified in route file for validinfo.js purposes
 
 const register = require('./routes/register')
-app.use('/register', register)
+app.use('/', register) // '/register' specified in route file for validinfo.js purposes
 
 ///////// POST LOG-IN ///////// 
 

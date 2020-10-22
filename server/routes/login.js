@@ -1,11 +1,11 @@
 const express = require('express');
+const validInfo = require('../middleware/validInfo')
 const route = express.Router();
 const pool = require('../db/db');
 const bcrypt = require('bcrypt');
 const jwtGenerator = require('../utils/jwtGenerator')
-const validInfo = require('../middleware/validInfo')
 
-route.post('/', validInfo, async (req, res) => {    
+route.post('/login', validInfo, async (req, res) => {    
     try {
         const {email, password} = req.body
 
