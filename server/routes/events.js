@@ -3,7 +3,6 @@ const route = express.Router();
 const pool = require('../db/db');
     
 // CREATE A NEW EVENT
-
     route.post('/', async (req, res) => {
         try {
             const { trip_ref_id, event_name, start_date, end_date, description, photos, rating } = req.body;
@@ -48,8 +47,6 @@ route.get('/:id', async (req,res) => {
     }
 })
 
-
-
 // UPDATE EVENT
 route.put('/:id', async (req, res) => {
     try {
@@ -76,7 +73,6 @@ route.delete('/:id', async (req, res) => {
             'DELETE FROM event WHERE event_id = $1',
             [id]
         )
-
         res.status(200).json('Successfully Deleted Event');
         
     } catch (err) {

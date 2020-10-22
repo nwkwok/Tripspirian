@@ -17,10 +17,10 @@ route.post('/', async (req, res) => {
             if (validatePass) {
                 res.json('Authenticated User')
             } else {
-                res.json('Sorry, that password did not match.')
+                res.json('Sorry, try again')
             }
         } else {
-            res.status(404).json('User not found');
+            res.status(404).json('Sorry, try again');
         }
 
     } catch (err) {
