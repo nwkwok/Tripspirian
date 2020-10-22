@@ -1,11 +1,12 @@
-const express = require('express')
+const express = require('express');
 const route = express.Router();
 const pool = require('../db/db');
-const bcrypt = require('bcrypt')
-const jwtGenerator = require('../utils/jwtGenerator')
+const bcrypt = require('bcrypt');
+const jwtGenerator = require('../utils/jwtGenerator');
+const validInfo = require('../middleware/validInfo');
 
 // CREATE/REGISTER NEW USER
-route.post('/', async (req, res) => {
+route.post('/', validInfo, async (req, res) => {
     try {
     const {f_name, l_name, email, password} = req.body
 
