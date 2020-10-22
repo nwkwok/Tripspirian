@@ -2,12 +2,21 @@ const express = require('express');
 const route = express.Router();
 const pool = require('../db/db');
 
-
 // CREATE A TRIP - localhost:3000/users/trips/
 
-// route.post('/', async (req, res) => { 
-//     const { trip_name, start_date, end_date, description, is_public, cover_photo } = req.body
-// })
+route.post('/', async (req, res) => { 
+    try {
+        const { user_id, trip_name, start_date, end_date, description, is_public, cover_photo } = req.body
+        const createTrip = await pool.query(
+            'INSERT INTO trip (user_id, trip_name, start_date, end_date, description, is_public, cover_photo) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
+            [user_id, trip_name, start_date, end_date, description, is_public, cover_photo]
+        )
+        res.status(200).json(createTrip.rows)
+    } catch (err) {
+        console.error(err.message)
+    }
+   
+})
 
 // GET ALL TRIPS
 route.get('/', async (req, res) => {
@@ -53,7 +62,7 @@ route.get('/users/:id', async (req, res) => {
     }
 })
 
-// UPDATE TRIP
+// UPDATE TRIP BY TRIP_ID
 route.put('/:id', async (req, res) => {
     try {
         const { id } = req.params

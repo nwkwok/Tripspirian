@@ -26,7 +26,8 @@ CREATE TABLE event (
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
     description TEXT,
-    photos VARCHAR(128)
+    photos VARCHAR(128),
+    rating INT CHECK(rating >= 1 and rating <= 5)
 );
 
 --Dummy Data 
