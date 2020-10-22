@@ -17,17 +17,16 @@ const users = require('./routes/users')
 app.use('/users', users)
 
 const trips = require('./routes/trips')
-app.use('/users/trips', trips)
+app.use('/trips', trips)
 
 const events = require('./routes/events')
-app.use('/users/trips/events', events)
+app.use('/events', events)
 
 const login = require('./routes/login')
 app.use('/login', login)
 
 const register = require('./routes/register')
 app.use('/register', register)
-
 
 
 ///////// EXPRESS PORT /////////

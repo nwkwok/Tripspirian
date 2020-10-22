@@ -38,6 +38,7 @@ INSERT INTO users(f_name, l_name, email, password) VALUES ('Kai', 'Kwok', 'kdkwo
 INSERT INTO trip(user_id, trip_name, start_date, end_date, description, is_public, cover_photo) VALUES (1, 'Test Trip', current_date, current_date, 'My Trip to Los Angeles', TRUE, 'www.google.com/image');
 INSERT INTO trip(user_id, trip_name, start_date, end_date, description, is_public, cover_photo) VALUES (2, 'San Ramon', current_date, current_date, 'A trip to visit my cousins', FALSE, 'www.google.com/image');
 INSERT INTO trip(user_id, trip_name, start_date, end_date, description, is_public, cover_photo) VALUES (3, 'Torrance', current_date, current_date, 'Staycation!', TRUE, 'www.google.com/image');
+INSERT INTO trip(user_id, trip_name, start_date, end_date, description, is_public, cover_photo) VALUES (3, 'YMCA', current_date, current_date, 'Gotta lift those weights.', TRUE, 'www.google.com/image');
 
 INSERT INTO event(trip_ref_id, event_name, start_date, end_date, description, photos) VALUES (1, 'The Getty', current_date, current_date, 'Checking out some art exhibits @ The Getty', 'www.google.com/images');
 INSERT INTO event(trip_ref_id, event_name, start_date, end_date, description, photos) VALUES (2, 'The Park', current_date, current_date, 'Played at the park with my cousins', 'www.google.com/images');
