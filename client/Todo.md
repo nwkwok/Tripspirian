@@ -22,7 +22,10 @@
                 😡 Update event
                 😡 Delete events
                 
+        Figure out logic for the TripHub
+            (how can people view and download other people's trips but not delete or edit them?)
         
+        Create front end
 
         
 
