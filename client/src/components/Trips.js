@@ -1,10 +1,47 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+
 
 function Trips() {
+    const [trip, setTrip] = useState([]);
+
+    async function getUserData() {
+        try {
+            const response = await fetch('http://localhost:3000/dashboard/', {
+                method: "GET",
+                headers: { token: localStorage.token }
+            })
+
+            const parseResponse = await response.json()
+            console.log(parseResponse);
+            
+            setTrip(parseResponse.trip)
+
+        } catch (err) {
+            console.error(err.message)
+        }
+    }
+
+    useEffect(() => {
+        getUserData();
+
+    }, []);
+
     return (
         <div>
-            
-        </div>
+            <h1>Your Trips</h1>
+                <ul className="trips">
+                    {
+                    trip.map(t => {
+                        return (
+                            <li key={t.trip_id}>
+                                <Link to="/trip">{t.trip_name}</Link> 
+                            </li>
+                            )
+                        })
+                    }
+                </ul>   
+         </div>
     )
 }
 

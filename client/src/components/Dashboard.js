@@ -1,11 +1,11 @@
  import React, { Fragment, useState, useEffect } from 'react'
  import {toast} from 'react-toastify'
- import { Link } from 'react-router-dom'
+ import Trips from './Trips'
  
  const Dashboard = (props) => {
 
     const [name, setName] = useState("");
-    const [trip, setTrip] = useState([]);
+    // const [trip, setTrip] = useState([]);
 
     async function getUserData() {
         try {
@@ -16,8 +16,9 @@
 
             const parseResponse = await response.json()
             console.log(parseResponse);
+
             setName(parseResponse.user.f_name)
-            setTrip(parseResponse.trip)
+            // setTrip(parseResponse.trip)
 
         } catch (err) {
             console.error(err.message)
@@ -44,23 +45,10 @@
         </div>
         </section>
 
-        <section id="trips">
-             <div>
-             <h1>Recent Trips</h1>
-                <ul className="trips">
-                    {
-                        trip.map(t => {
-                          return (
-                                <li key={t.trip_id}>
-                                  <Link to="/trip">{t.trip_name}</Link> 
-                                </li>
-                          )
-                        })
-                    }
-                </ul>   
-             <button onClick={e => logout(e)}className='btn btn-primary'>Logout</button>
-         </div>
-         </section>
+            <Trips />
+
+         <button onClick={e => logout(e)}className='btn btn-primary'>Logout</button>
+
 
          </Fragment>
      )
