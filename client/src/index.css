@@ -12,3 +12,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#trips {
+  margin-top:40px;
+}
+
+ul {
+  list-style: none;
+}
+
+.trips {
+  font-size: 30px;
+  font-weight: bold;
+
+}

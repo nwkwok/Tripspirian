@@ -8,12 +8,25 @@ route.get('/', authorization, async (req,res) => {
         // req.user has the payload from authorization
         // res.json(req.user)
         const user = await pool.query(
-            'SELECT * FROM users WHERE id = $1',
+            'SELECT * FROM users WHERE id = $1 ORDER BY id asc',
             [req.user]
         );
+
+        const trip = await pool.query(
+            'SELECT * FROM trip WHERE user_id = $1',
+            [req.user]
+        );
+
+        const event = await pool.query(
+        'SELECT * FROM event LEFT JOIN trip ON event.trip_ref_id = trip.trip_id WHERE trip.user_id = $1',
+        [req.user]
+        );
+
         res.json({
-            'f_name': user.rows[0].f_name,
-            'l_name': user.rows[0].l_name});
+            'user': user.rows[0],
+            'trip': trip.rows,
+            'event': event.rows
+        });
 
     } catch (err) {
         console.error(err.message)

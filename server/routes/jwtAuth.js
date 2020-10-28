@@ -64,14 +64,16 @@ route.post('/login', validInfo, async (req, res) => {
 
 })
 
-route.get('/is-verify', authorization, async(req, res)=> {
-    try {
-        res.json(true)
-    } catch (err) {
-        console.error(err.message)
-        res.status(500).send("Server error")
-    }
-})
+//Test Authorization middelware
+
+// route.get('/is-verify', authorization, async(req, res)=> {
+//     try {
+//         res.json(true)
+//     } catch (err) {
+//         console.error(err.message)
+//         res.status(500).send("Server error")
+//     }
+// })
 
 
 module.exports = route;

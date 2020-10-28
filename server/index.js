@@ -11,7 +11,6 @@ app.use(express.json());
 app.use(cors());
 app.use(morgan('tiny'));
 
-
 ///////// EXPRESS ROUTER /////////
 app.use('/users', require('./routes/users'));
 app.use('/trips', require('./routes/trips'));
