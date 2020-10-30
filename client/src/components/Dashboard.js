@@ -1,6 +1,8 @@
  import React, { Fragment, useState, useEffect } from 'react'
  import { toast } from 'react-toastify'
  import Trips from './Trips'
+ import Button from '@material-ui/core/Button';
+
 
  const Dashboard = (props) => {
 
@@ -47,7 +49,11 @@
 
             <Trips name="trip_name" />
 
-         <button onClick={e => logout(e)}className='btn btn-primary'>Logout</button>
+         <Button 
+            variant='contained' 
+            color='primary' 
+            onClick={e => logout(e)}
+            className='btn btn-primary'>Logout</Button>
 
          </Fragment>
      )

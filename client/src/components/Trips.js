@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon'
+
+
 
 function Trips() {
     const [trip, setTrip] = useState([]);
@@ -26,6 +30,9 @@ function Trips() {
         getUserData();
     }, []);
 
+    const handleClick = e => {
+        console.log("clicked")
+    }
 
 
     return (
@@ -42,6 +49,14 @@ function Trips() {
                         })
                     }
                 </ul>   
+                <div>
+                    <Button 
+                        variant="outlined" 
+                        onClick={handleClick}
+                        color="primary"> 
+                        Add Trip
+                    </Button>
+                </div>
          </div>
     )
 }

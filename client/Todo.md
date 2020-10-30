@@ -9,10 +9,13 @@
             Dashboard:
                 ✅ Get all trips (...limit up to 5)
                 😡 Create a new trip
+
+                    -- Create modal component
+                    -- Delete modal component
+                    -- Edit modal component
             
-            Trips Component:
-                😡 Create a new trip
-                😡 Update Trip
+            Inside of Trips Component:
+                😡 Edit Trip Modal
                 😡 Delete Trip
 
             Events Component:
