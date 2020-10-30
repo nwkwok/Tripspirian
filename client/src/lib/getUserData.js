@@ -9,6 +9,7 @@ async function getUserData() {
         console.log(parseResponse);
         // setName(parseResponse.user.f_name)
         // setTrip(parseResponse.trip)
+        // setEvent(parseResponse.event)
 
     } catch (err) {
         console.error(err.message)

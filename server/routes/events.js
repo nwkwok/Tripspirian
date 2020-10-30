@@ -43,9 +43,22 @@ route.get('/:id', async (req,res) => {
     res.status(200).json(getEventById.rows);
     } catch (err) {
         console.error(err.message)
-        
     }
 })
+
+// GET EVENTS BY TRIP_ID
+route.get('/trips/:id', async (req, res) => {
+    try {
+        const { id } = req.params
+        const getEventsByTripId = await pool.query(
+            'SELECT * FROM event WHERE trip_ref_id = $1',
+            [id]
+        )
+        res.status(200).json(getEventsByTripId.rows);
+    } catch (error) {
+        console.error(err.message)
+    }
+});
 
 // UPDATE EVENT
 route.put('/:id', async (req, res) => {

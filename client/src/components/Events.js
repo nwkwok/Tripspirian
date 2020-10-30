@@ -28,13 +28,13 @@ function Events() {
 
     return (
         <div>
-            <h1>Recent Trips</h1>
+            <h1>Events for TripName</h1>
                 <ul className="events">
                     {
-                    trip.event(e => {
+                    event.map(e => {
                         return (
                             <li key={e.event_id}>
-                                <Link to="/trip">{e.event_name}</Link> 
+                                <Link to="/events">{e.event_name}</Link> 
                             </li>
                             )
                         })

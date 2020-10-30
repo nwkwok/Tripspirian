@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import Events from './Events'
 
-
-function Trips() {
+function Trips(props) {
+    console.log(props);
     const [trip, setTrip] = useState([]);
+    const [event, setEvent] = useState([])
 
     async function getUserData() {
         try {
@@ -16,6 +18,7 @@ function Trips() {
             console.log(parseResponse);
             
             setTrip(parseResponse.trip)
+            setEvent(parseResponse.event)
 
         } catch (err) {
             console.error(err.message)
@@ -24,8 +27,9 @@ function Trips() {
 
     useEffect(() => {
         getUserData();
-
     }, []);
+
+
 
     return (
         <div>
@@ -35,7 +39,7 @@ function Trips() {
                     trip.map(t => {
                         return (
                             <li key={t.trip_id}>
-                                <Link to="/trip">{t.trip_name}</Link> 
+                                <Link name={t.trip_name} to={`${t.trip_name}/${t.trip_id}`}>{t.trip_name}</Link> 
                             </li>
                             )
                         })

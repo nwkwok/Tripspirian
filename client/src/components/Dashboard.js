@@ -1,11 +1,11 @@
  import React, { Fragment, useState, useEffect } from 'react'
- import {toast} from 'react-toastify'
+ import { toast } from 'react-toastify'
  import Trips from './Trips'
- 
+
  const Dashboard = (props) => {
 
     const [name, setName] = useState("");
-    // const [trip, setTrip] = useState([]);
+    const [trip, setTrip] = useState([]);
 
     async function getUserData() {
         try {
@@ -18,7 +18,7 @@
             console.log(parseResponse);
 
             setName(parseResponse.user.f_name)
-            // setTrip(parseResponse.trip)
+            setTrip(parseResponse.trip)
 
         } catch (err) {
             console.error(err.message)
@@ -45,10 +45,9 @@
         </div>
         </section>
 
-            <Trips />
+            <Trips name="trip_name" />
 
          <button onClick={e => logout(e)}className='btn btn-primary'>Logout</button>
-
 
          </Fragment>
      )
