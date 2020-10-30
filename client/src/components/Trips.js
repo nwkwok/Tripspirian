@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-function Trips(props) {
-    console.log(props);
+function Trips() {
     const [trip, setTrip] = useState([]);
     const [event, setEvent] = useState([])
 
@@ -14,7 +13,6 @@ function Trips(props) {
             })
 
             const parseResponse = await response.json()
-            console.log(parseResponse);
             
             setTrip(parseResponse.trip)
             setEvent(parseResponse.event)
@@ -38,7 +36,7 @@ function Trips(props) {
                     trip.map(t => {
                         return (
                             <li key={t.trip_id}>
-                                <Link name={t.trip_name} to={`events/${t.trip_id}`}>{t.trip_name}</Link> 
+                                <Link to={`events/${t.trip_id}`}>{t.trip_name}</Link> 
                             </li>
                             )
                         })

@@ -9,6 +9,7 @@ import Login from './components/Login'
 import Register from './components/Register'
 import Trips from './components/Trips'
 import Events from './components/Events'
+import EditEvent from './components/EditEvent'
 
 toast.configure();
 
@@ -72,6 +73,13 @@ async function isAuth(){
               {props => 
                   isAuthenticated ? 
                   (<Events {...props} setAuth={setAuth}/>) : 
+                  (<Redirect to='/login' />)
+                  }
+                />
+            <Route exact path='/events/:id/update/' render=
+              {props => 
+                  isAuthenticated ? 
+                  (<EditEvent {...props} setAuth={setAuth}/>) : 
                   (<Redirect to='/login' />)
                   }
                 />

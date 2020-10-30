@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
-
 function Events(props) {
 
     const { id } = useParams()
@@ -36,7 +35,7 @@ function Events(props) {
                     event.map(e => {
                         return (
                             <li key={e.event_id}>
-                                <Link to="/events">{e.event_name}</Link> 
+                                <Link to={`/events/${e.event_id}/update`}>{e.event_name}</Link> 
                             </li>
                             )
                         })
