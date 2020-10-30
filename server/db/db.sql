@@ -49,4 +49,3 @@ INSERT INTO trip(user_id, trip_name, start_date, end_date, description, is_publi
 INSERT INTO event(trip_ref_id, event_name, start_date, end_date, description, photos) VALUES (1, 'The Getty', current_date, current_date, 'Checking out some art exhibits @ The Getty', 'www.google.com/images');
 INSERT INTO event(trip_ref_id, event_name, start_date, end_date, description, photos) VALUES (2, 'The Park', current_date, current_date, 'Played at the park with my cousins', 'www.google.com/images');
 INSERT INTO event(trip_ref_id, event_name, start_date, end_date, description, photos) VALUES (3, 'The Aquarium', current_date, current_date, 'Went to the aquarium with my mom and baby brother.', 'www.google.com/images');
-

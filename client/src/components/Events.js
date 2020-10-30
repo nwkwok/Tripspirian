@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
-function Events() {
+
+function Events(props) {
+
+    const { id } = useParams()
     const [event, setEvent] = useState([]);
 
-    async function getUserData() {
+    async function getEvents() {
         try {
-            const response = await fetch('http://localhost:3000/dashboard/', {
+            const response = await fetch(`http://localhost:3000/events/trips/${id}`, {
                 method: "GET",
                 headers: { token: localStorage.token }
             })
@@ -14,7 +17,7 @@ function Events() {
             const parseResponse = await response.json()
             console.log(parseResponse);
             
-            setEvent(parseResponse.event)
+            setEvent(parseResponse)
 
         } catch (err) {
             console.error(err.message)
@@ -22,13 +25,12 @@ function Events() {
     }
 
     useEffect(() => {
-        getUserData();
-
+        getEvents();
     }, []);
 
     return (
         <div>
-            <h1>Events for TripName</h1>
+            <h1>Events for {props.name}</h1>
                 <ul className="events">
                     {
                     event.map(e => {

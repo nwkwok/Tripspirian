@@ -68,7 +68,7 @@ async function isAuth(){
                   (<Redirect to='/login' />)
                   }
               />
-            <Route exact path='/events' render=
+            <Route exact path='/events/:id' render=
               {props => 
                   isAuthenticated ? 
                   (<Events {...props} setAuth={setAuth}/>) : 

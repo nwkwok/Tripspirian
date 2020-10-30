@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import Events from './Events'
 
 function Trips(props) {
     console.log(props);
@@ -39,7 +38,7 @@ function Trips(props) {
                     trip.map(t => {
                         return (
                             <li key={t.trip_id}>
-                                <Link name={t.trip_name} to={`${t.trip_name}/${t.trip_id}`}>{t.trip_name}</Link> 
+                                <Link name={t.trip_name} to={`events/${t.trip_id}`}>{t.trip_name}</Link> 
                             </li>
                             )
                         })
