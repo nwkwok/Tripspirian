@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon'
+import Modal from './Modal'
+import CreateTrip from './CreateTrip'
+
+
+
 
 
 
 function Trips() {
+    const [isOpen, setIsOpen] = useState(false);
     const [trip, setTrip] = useState([]);
     const [event, setEvent] = useState([])
 
@@ -52,10 +57,20 @@ function Trips() {
                 <div>
                     <Button 
                         variant="outlined" 
-                        onClick={handleClick}
-                        color="primary"> 
+                        color="secondary"
+                        onClick={() => setIsOpen(true)}>
                         Add Trip
                     </Button>
+
+                    {/* <Button 
+            variant='containted'
+            color='secondary'
+            onClick={() => setIsOpen(true)}>Open Modal</Button> */}
+
+        <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+            <CreateTrip />
+        </Modal>
+
                 </div>
          </div>
     )

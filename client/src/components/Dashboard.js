@@ -2,11 +2,9 @@
  import { toast } from 'react-toastify'
  import Trips from './Trips'
  import Button from '@material-ui/core/Button';
- import Modal from './Modal'
 
 
  const Dashboard = (props) => {
-    const [isOpen, setIsOpen] = useState(false);
     const [name, setName] = useState("");
     const [trip, setTrip] = useState([]);
 
@@ -55,15 +53,6 @@
             color='primary' 
             onClick={e => logout(e)}
             className='btn btn-primary'>Logout</Button>
-
-        <Button 
-            variant='containted'
-            color='secondary'
-            onClick={() => setIsOpen(true)}>Open Modal</Button>
-
-        <Modal open={isOpen} onClose={() => setIsOpen(false)}>
-          <input type="text" placeholder="Trip Name"></input>
-        </Modal>
 
          </Fragment>
      )

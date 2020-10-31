@@ -11,7 +11,6 @@ import Register from './components/Register'
 import Trips from './components/Trips'
 import Events from './components/Events'
 import EditEvent from './components/EditEvent'
-import Modal from './components/Modal'
 
 toast.configure();
 
