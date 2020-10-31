@@ -11,10 +11,20 @@ import Register from './components/Register'
 import Trips from './components/Trips'
 import Events from './components/Events'
 import EditEvent from './components/EditEvent'
+import Modal from './components/Modal'
 
 toast.configure();
 
+//Modal Styles
+
+const BUTTON_WRAPPER_STYLES = {
+  position: 'relative',
+  zIndex: 1
+}
+
+
 function App() {
+  const [isOpen, setIsOpen] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const setAuth = (boolean) => {
     setIsAuthenticated(boolean)
@@ -85,6 +95,13 @@ async function isAuth(){
                   }
                 />
           </Switch>
+          <div style={BUTTON_WRAPPER_STYLES} onClick={() => console.log('clicked')}>
+        <button onClick={() => setIsOpen(true)}>Open Modal</button>
+
+        <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+          <input type="text" placeholder="Trip Name"></input>
+        </Modal>
+      </div>
         </div>
       </Router>
     </Fragment>
