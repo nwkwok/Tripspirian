@@ -8,11 +8,14 @@
         Create inputs with CRUD
             Dashboard:
                 ✅ Get all trips (...limit up to 5)
-                😡 Create a new trip
+                ✅ Get all trips (...limit up to 5)
 
-                    -- Create modal component
-                    -- Delete modal component
-                    -- Edit modal component
+                😡 Create a new trip
+                    - Make sure date formats align with DB
+                    - Add checkbox for isPublic 
+                    - Then it will be complete!
+
+                    
             
             Inside of Trips Component:
                 😡 Edit Trip Modal
