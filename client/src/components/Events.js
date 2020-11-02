@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import Button from '@material-ui/core/Button';
+import Modal from './Modal'
+import CreateEvent from '../components/CreateEvent'
 
 function Events(props) {
-
     const { id } = useParams()
     const [event, setEvent] = useState([]);
+    const [isOpen, setIsOpen] = useState(false)
 
     async function getEvents() {
         try {
@@ -15,7 +18,6 @@ function Events(props) {
 
             const parseResponse = await response.json()
             console.log(parseResponse);
-            
             setEvent(parseResponse)
 
         } catch (err) {
@@ -28,8 +30,9 @@ function Events(props) {
     }, []);
 
     return (
+        <>
         <div>
-            <h1>Events for {props.name}</h1>
+            <h1>Events for {props.tripName}</h1>
                 <ul className="events">
                     {
                     event.map(e => {
@@ -41,7 +44,21 @@ function Events(props) {
                         })
                     }
                 </ul>   
+                <div>
+                    <Button 
+                        variant="outlined" 
+                        color="secondary"
+                        onClick={() => setIsOpen(true)}>
+                        Add Event
+                    </Button>
+
+                    <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+                        <CreateEvent user={props.user} />
+                    </Modal>
+
+                </div>
          </div>
+         </>
     )
 }
 

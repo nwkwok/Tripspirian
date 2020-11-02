@@ -18,6 +18,24 @@ const pool = require('../db/db');
         }
     })
 
+// CREATE A NEW EVENT BY TRIPID
+route.post('/trips/:id', async (req, res) => {
+    try {
+        const { id } = req.params
+        const { event_name, start_date, end_date, description, photos, rating } = req.body;
+        const createEvent = await pool.query(
+            'INSERT INTO event (event_name, start_date, end_date, description, photos, rating) VALUES ($1, $2, $3, $4, $5, $6) WHERE trip_ref_id = $7 RETURNING *',
+            [event_name, start_date, end_date, description, photos, rating, id]
+        );
+
+        res.status(200).json(createEvent.rows);
+    } catch (err) {
+        console.error(err.message)
+        
+    }
+})
+
+
 // GET ALL EVENTS
     route.get('/', async (req, res) => {
         try {
@@ -59,6 +77,21 @@ route.get('/trips/:id', async (req, res) => {
         console.error(err.message)
     }
 });
+
+// GET TRIPNAME BY EVENT_ID
+
+route.get('/trips/:id', async (req, res) => {
+    try {
+        const { id } = req.params
+        const getTripNameByEventId = await pool.query(
+            'SELECT trip_name FROM trip LEFT JOIN event ON event.trip_ref_id = trip.trip_id WHERE trip_id = $1',
+            [id]
+        )
+        res.status(200).json(getTripNameByEventId.rows);
+    } catch (err) {
+        console.error(err.message)
+    }
+})
 
 // UPDATE EVENT
 route.put('/:id', async (req, res) => {
