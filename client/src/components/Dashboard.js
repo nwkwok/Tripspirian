@@ -7,6 +7,7 @@
  const Dashboard = (props) => {
     const [name, setName] = useState("");
     const [trip, setTrip] = useState([]);
+    const [userId, setUserId] = useState("");
 
     async function getUserData() {
         try {
@@ -18,6 +19,7 @@
             const parseResponse = await response.json()
             console.log(parseResponse);
 
+            setUserId(parseResponse.user.id)
             setName(parseResponse.user.f_name)
             setTrip(parseResponse.trip)
 
@@ -28,7 +30,6 @@
 
     useEffect(() => {
         getUserData();
-
     }, []);
 
     const logout = (e) => {
@@ -40,14 +41,14 @@
 
      return (
          <Fragment>
-             <Container>
+             <Container maxWidth="sm">
                 <section id="header">
                 <div>
                     <h1>Welcome to Tripspirian, {name}!</h1>
                 </div>
                 </section>
 
-                    <Trips name="trip_name" />
+                    <Trips user={userId} />
 
                 <Button 
                     variant='contained' 

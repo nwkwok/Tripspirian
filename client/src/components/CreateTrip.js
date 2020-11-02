@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function CreateTrip(props) {
-  const user_id = props.tripData[0].user_id
+  const user_id = props.user;
   const location = useLocation();
   const history = useHistory();
   const [trip, setTrip] = useState("")

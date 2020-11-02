@@ -77,7 +77,7 @@ function Trips(props) {
                     </Button>
 
                     <Modal open={isOpen} onClose={() => setIsOpen(false)}>
-                        <CreateTrip tripData={trip} />
+                        <CreateTrip user={props.user} />
                     </Modal>
 
                 </div>
