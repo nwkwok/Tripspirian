@@ -1,7 +1,7 @@
  import React, { Fragment, useState, useEffect } from 'react'
  import { toast } from 'react-toastify'
  import Trips from './Trips'
- import Button from '@material-ui/core/Button';
+ import {Button, Container} from '@material-ui/core/';
 
 
  const Dashboard = (props) => {
@@ -40,20 +40,21 @@
 
      return (
          <Fragment>
-        <section id="header">
-         <div>
-             <h1>Welcome to Tripspirian, {name}!</h1>
-        </div>
-        </section>
+             <Container>
+                <section id="header">
+                <div>
+                    <h1>Welcome to Tripspirian, {name}!</h1>
+                </div>
+                </section>
 
-            <Trips name="trip_name" />
+                    <Trips name="trip_name" />
 
-         <Button 
-            variant='contained' 
-            color='primary' 
-            onClick={e => logout(e)}
-            className='btn btn-primary'>Logout</Button>
-
+                <Button 
+                    variant='contained' 
+                    color='primary' 
+                    onClick={e => logout(e)}
+                    className='btn btn-primary'>Logout</Button>
+            </Container>
          </Fragment>
      )
  }

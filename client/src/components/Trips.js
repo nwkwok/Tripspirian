@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
 import Modal from './Modal'
 import CreateTrip from './CreateTrip'
+import { useHistory, useLocation } from 'react-router-dom';
+import axios from 'axios'
 
 
-
-
-
-
-function Trips() {
+function Trips(props) {
     const [isOpen, setIsOpen] = useState(false);
+    const location = useLocation();
+    const history = useHistory();
     const [trip, setTrip] = useState([]);
     const [event, setEvent] = useState([])
 
@@ -35,8 +35,18 @@ function Trips() {
         getUserData();
     }, []);
 
-    const handleClick = e => {
-        console.log("clicked")
+
+
+    const deleteTrip = async (id) => {
+        try {
+            const response = await axios.delete(`http://localhost:3000/trips/${id}`)
+            history.push('/');
+            history.push(location.pathname);
+        } catch (err) {
+            console.error(err.message)
+        }
+        
+        console.log(id)
     }
 
 
@@ -49,6 +59,10 @@ function Trips() {
                         return (
                             <li key={t.trip_id}>
                                 <Link to={`events/${t.trip_id}`}>{t.trip_name}</Link> 
+
+                                <Button 
+                                    color="secondary"
+                                    onClick={() => deleteTrip(t.trip_id)}>Delete Trip</Button>
                             </li>
                             )
                         })
@@ -62,14 +76,9 @@ function Trips() {
                         Add Trip
                     </Button>
 
-                    {/* <Button 
-            variant='containted'
-            color='secondary'
-            onClick={() => setIsOpen(true)}>Open Modal</Button> */}
-
-        <Modal open={isOpen} onClose={() => setIsOpen(false)}>
-            <CreateTrip />
-        </Modal>
+                    <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+                        <CreateTrip tripData={trip} />
+                    </Modal>
 
                 </div>
          </div>

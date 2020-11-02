@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Checkbox from '@material-ui/core/Checkbox';
-
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { useHistory, useLocation } from 'react-router-dom';
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -17,45 +19,92 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CreateTrip() {
+export default function CreateTrip(props) {
+  const user_id = props.tripData[0].user_id
+  const location = useLocation();
+  const history = useHistory();
+  const [trip, setTrip] = useState("")
+  const [startDate, setStartDate] = useState("")
+  const [endDate, setEndDate] = useState("")
+  const [description, setDescription] = useState("")
+  const [isPublic, setIsPublic] = useState(true)
+  const [coverPhoto, setCoverPhoto] = useState("")
   const classes = useStyles();
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+
+      const response = await axios.post('http://localhost:3000/trips', {
+        user_id,
+        trip_name: trip,
+        start_date: startDate,
+        end_date: endDate,
+        description,
+        is_public: isPublic,
+        cover_photo: coverPhoto
+      });
+
+      history.push('/');
+      history.push(location.pathname);
+      
+    } catch (err) {
+      console.error(err.message)
+    }
+  }
+
+  const handleChange = () => {
+    setIsPublic(!isPublic);
+  }
+
   return (
-    <form className={classes.container} noValidate>
+    <form autoComplete="off" className={classes.container} noValidate onSubmit={handleSubmit}>
         <TextField
         id="tripName"
         name="trip_name"
         label="Trip Name"
+        value={trip}
+        onChange={(e) => setTrip(e.target.value)}
         />
       
       <TextField
         id="tripStartDate"
         name="start_date"
         label="Start Date"
-        type="date"
-        defaultValue="2020-01-01"
-        className={classes.textField}
-        InputLabelProps={{
-          shrink: true,
-        }}
+        type="text"
+        value={startDate}
+        placeholder="2020-01-01"
+        onChange={(e) => setStartDate(e.target.value)}
       />
          <TextField
         id="tripEndDate"
         name="end_date"
         label="End Date"
-        type="date"
-        defaultValue="2020-01-02"
-        className={classes.textField}
-        InputLabelProps={{
-          shrink: true,
-        }}
+        type="text"
+        value={endDate}
+        placeholder="2020-01-02"
+        onChange={(e) => setEndDate(e.target.value)}
         />
 
         <TextField
         id="description"
         name="description"
         label="Description"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
         multiline
+        />
+        <FormControlLabel 
+          control={
+              <Checkbox 
+                checked={isPublic} 
+                name="isPublic"
+                color="primary"
+                value={isPublic}
+                onChange={handleChange} 
+                />
+          }
+              label="Make trip publicl?"
         />
 
         <Button 
@@ -64,7 +113,18 @@ export default function CreateTrip() {
           >
 
             Upload Cover Photo
-            <input type="file" style={{display:'none'}}/>
+              <input 
+                type="file" 
+                style={{display:'none'}}
+                onChange={(e) => setCoverPhoto(e.target.value)}
+                value={coverPhoto}/>
+          </Button>
+
+          <Button 
+            variant="contained"
+            type="submit"
+            color="secondary">
+            Create Trip Entry
           </Button>
 
     </form>
