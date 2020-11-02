@@ -10,20 +10,18 @@
                 ✅ Get all trips (...limit up to 5)
                 ✅ Get all trips (...limit up to 5)
 
-                😡 Create a new trip
+                ✅ Create a new trip
                     - Make sure date formats align with DB
                     - Add checkbox for isPublic 
                     - Then it will be complete!
 
-                    
-            
             Inside of Trips Component:
-                😡 Edit Trip Modal
-                😡 Delete Trip
+                ✅ Edit Trip Modal
+                ✅ Delete Trip
 
             Events Component:
             (For each individual trip -- be able to):
-                😡 Get all events
+                ✅ Get all events
                 😡 Create a new event
                 😡 Update event
                 😡 Delete events
