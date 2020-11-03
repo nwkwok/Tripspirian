@@ -18,11 +18,13 @@
             Inside of Trips Component:
                 ✅ Edit Trip Modal
                 ✅ Delete Trip
+                😡 Update trip
+                😡 Delete trip
 
             Events Component:
             (For each individual trip -- be able to):
                 ✅ Get all events
-                😡 Create a new event
+                ✅ Create a new event
                 😡 Update event
                 😡 Delete events
                 
@@ -33,4 +35,5 @@
 
         
 
- 
+ query the event table
+ SELECT event.*, trip.* from event LEFT Join trip on trip.id = event.trip_id WHERE trip_id = $1 

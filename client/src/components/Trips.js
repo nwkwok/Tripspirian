@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
 import Modal from './Modal'
 import CreateTrip from './CreateTrip'
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory, useLocation, Link } from 'react-router-dom';
 import axios from 'axios'
 
 
@@ -58,7 +57,9 @@ function Trips(props) {
                 trip.map(t => {
                     return (
                         <li key={t.trip_id}>
-                            <Link to={`events/${t.trip_id}`}>{t.trip_name}</Link> 
+                            <Link to={{
+                                pathname:`events/${t.trip_id}`,
+                                trip: t.trip_name}}>{t.trip_name}</Link> 
                             <Button 
                                 color="secondary"
                                 onClick={() => deleteTrip(t.trip_id)}>Delete Trip</Button>
