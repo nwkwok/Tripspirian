@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useHistory, useLocation } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
 import Modal from './Modal'
 import CreateEvent from '../components/CreateEvent'
+import axios from 'axios';
 
 function Events(props) {
     const { id } = useParams()
+    const location = useLocation();
+    const history = useHistory();
     const [event, setEvent] = useState([]);
     const [isOpen, setIsOpen] = useState(false)
 
@@ -29,6 +32,19 @@ function Events(props) {
         getEvents();
     }, []);
 
+    const deleteEvent = async (id) => {
+        try {
+            const response = await axios.delete(`http://localhost:3000/events/${id}`)
+            history.push('/');
+            history.push(location.pathname);
+
+        } catch (err) {
+            console.error(err.message)
+        }
+    }
+
+
+
     return (
         <>
         <div>
@@ -39,6 +55,10 @@ function Events(props) {
                         return (
                             <li key={e.event_id}>
                                 <Link to={`/events/${e.event_id}/update`}>{e.event_name}</Link> 
+                                <Button
+                                    color="secondary"
+                                    onClick={()=>deleteEvent(e.event_id)} 
+                                    >Delete Event</Button>
                             </li>
                             )
                         })

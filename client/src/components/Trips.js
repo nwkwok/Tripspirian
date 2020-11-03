@@ -54,15 +54,14 @@ function Trips(props) {
         <div>
             <h1>Your Trips</h1>
                 <ul className="trips">
-                    {
-                    trip.map(t => {
-                        return (
-                            <li key={t.trip_id}>
-                                <Link to={`events/${t.trip_id}`}>{t.trip_name}</Link> 
-
-                                <Button 
-                                    color="secondary"
-                                    onClick={() => deleteTrip(t.trip_id)}>Delete Trip</Button>
+                {
+                trip.map(t => {
+                    return (
+                        <li key={t.trip_id}>
+                            <Link to={`events/${t.trip_id}`}>{t.trip_name}</Link> 
+                            <Button 
+                                color="secondary"
+                                onClick={() => deleteTrip(t.trip_id)}>Delete Trip</Button>
                             </li>
                             )
                         })

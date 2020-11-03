@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import Checkbox from '@material-ui/core/Checkbox';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { TextField, Button, Checkbox, FormControl, FormControlLabel } from '@material-ui/core/'
 import { useHistory, useLocation } from 'react-router-dom';
 import axios from 'axios';
 
@@ -58,7 +55,7 @@ export default function CreateTrip(props) {
   }
 
   return (
-    <form autoComplete="off" className={classes.container} noValidate onSubmit={handleSubmit}>
+    <FormControl autoComplete="off" className={classes.container} noValidate>
         <TextField
         id="tripName"
         name="trip_name"
@@ -123,10 +120,11 @@ export default function CreateTrip(props) {
           <Button 
             variant="contained"
             type="submit"
+            onClick={handleSubmit}
             color="secondary">
             Create Trip Entry
           </Button>
 
-    </form>
+    </FormControl>
   );
 }

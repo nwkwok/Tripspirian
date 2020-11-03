@@ -19,13 +19,13 @@ const pool = require('../db/db');
     })
 
 // CREATE A NEW EVENT BY TRIPID
-route.post('/trips/:id', async (req, res) => {
+route.post('/:id', async (req, res) => {
     try {
         const { id } = req.params
         const { event_name, start_date, end_date, description, photos, rating } = req.body;
         const createEvent = await pool.query(
-            'INSERT INTO event (event_name, start_date, end_date, description, photos, rating) VALUES ($1, $2, $3, $4, $5, $6) WHERE trip_ref_id = $7 RETURNING *',
-            [event_name, start_date, end_date, description, photos, rating, id]
+            'INSERT INTO event (trip_ref_id, event_name, start_date, end_date, description, photos, rating) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
+            [id, event_name, start_date, end_date, description, photos, rating]
         );
 
         res.status(200).json(createEvent.rows);
