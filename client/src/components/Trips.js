@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Button from '@material-ui/core/Button';
 import Modal from './Modal'
-import CreateTrip from './CreateTrip'
+import CreateTrip from './Modals/CreateTrip'
 import { useHistory, useLocation, Link } from 'react-router-dom';
 import axios from 'axios'
 

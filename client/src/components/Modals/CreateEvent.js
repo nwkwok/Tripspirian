@@ -27,7 +27,6 @@ export default function CreateEvent(props) {
   const [description, setDescription] = useState("")
   const [coverPhoto, setCoverPhoto] = useState("")
 
-
   const classes = useStyles();
 
   const handleSubmit = async (e) => {

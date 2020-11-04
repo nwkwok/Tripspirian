@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link, useParams, useHistory, useLocation } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
 import Modal from './Modal'
-import CreateEvent from '../components/CreateEvent'
+import CreateEvent from '../components/Modals/CreateEvent'
 import axios from 'axios';
 import { FormControl } from '@material-ui/core';
 
@@ -85,11 +85,11 @@ return (
             {trip.map(t => {
                 return (
                 <>
-                <h1 key={t.trip_id}>{t.trip_name} Summary <span onClick={() => setEditEventIsOpen(true)}>[Change Trip Name]</span> </h1> 
-                <ul>
-                    <li>{t.start_date}</li>
-                    <li>{t.end_date}</li>
-                    <li>{t.description}</li>
+                <h1>{t.trip_name} Summary <span onClick={() => setEditEventIsOpen(true)}>[Change Trip Name]</span> </h1> 
+                <ul key={t.trip_id}>
+                    <li>Start Date: {t.start_date}</li>
+                    <li>End Date: {t.end_date}</li>
+                    <li>Description: {t.description}</li>
                     <li>{t.cover_photo}</li>
                 </ul>
                 </>
