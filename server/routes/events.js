@@ -94,7 +94,7 @@ route.get('/trips/:id', async (req, res) => {
 })
 
 // UPDATE EVENT
-route.put('/:id', async (req, res) => {
+route.put('/:id/update', async (req, res) => {
     try {
         const { id } = req.params;
         const { event_name, start_date, end_date, description, photos, rating } = req.body;
@@ -108,6 +108,21 @@ route.put('/:id', async (req, res) => {
     } catch (err) {
         console.error(err.message)
         
+    }
+})
+
+// UPDATE TRIP BY TRIP ID EVENT
+route.put('/:id', async (req, res) => {
+    try {
+        const { id } = req.params
+        const { trip_name, start_date, end_date, description, is_public, cover_photo} = req.body;
+        const updateTrip = await pool.query(
+            'UPDATE trip SET trip_name = $1, start_date = $2, end_date = $3, description = $4, is_public = $5, cover_photo = $6 WHERE trip_id = $7 RETURNING *',
+            [trip_name, start_date, end_date, description, is_public, cover_photo, id]
+        );
+        res.status(200).json(updateTrip.rows);
+    } catch (err) {
+        console.error(err.message);        
     }
 })
 

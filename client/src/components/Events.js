@@ -5,6 +5,7 @@ import Modal from './Modal'
 import CreateEvent from '../components/Modals/CreateEvent'
 import axios from 'axios';
 import { FormControl } from '@material-ui/core';
+import UpdateTrip from './Modals/UpdateTrip'
 
 function Events(props) {
     console.log(props.location)
@@ -85,7 +86,7 @@ return (
             {trip.map(t => {
                 return (
                 <>
-                <h1>{t.trip_name} Summary <span onClick={() => setEditEventIsOpen(true)}>[Change Trip Name]</span> </h1> 
+                <h1>{t.trip_name} Summary <span onClick={() => setEditEventIsOpen(true)}>[Edit Trip]</span> </h1> 
                 <ul key={t.trip_id}>
                     <li>Start Date: {t.start_date}</li>
                     <li>End Date: {t.end_date}</li>
@@ -132,7 +133,9 @@ return (
 
                     <Modal open={editEventIsOpen} onClose={() => setEditEventIsOpen(false)}>
                         <FormControl autoComplete="off" noValidate>
-                            <input 
+                            
+                            <UpdateTrip />
+                            {/* <input 
                                 type="text" 
                                 label="Change trip name" 
                                 placeholder={`${props.location.trip}`}
@@ -142,7 +145,7 @@ return (
                                 variant='default'
                                 // onClick={updateTripName}
                                 type="submit"
-                                />
+                                /> */}
                         </FormControl>
                     </Modal>
 

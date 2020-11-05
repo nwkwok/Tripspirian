@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import UpdateEvent from './Modals/UpdateEvent'
+import Button from '@material-ui/core/Button'
+import Modal from './Modal'
+
 
 function EditEvent(props) {
-
+    const [isOpen, setIsOpen] = useState(false)
     const { id } = useParams()
     const [event, setEvent] = useState([]);
 
@@ -54,6 +58,17 @@ function EditEvent(props) {
                 </ul>
                 )
             })}
+
+                    <Button 
+                        variant="outlined" 
+                        color="secondary"
+                        onClick={() => setIsOpen(true)}>
+                        Add Trip
+                    </Button>
+
+                    <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+                        <UpdateEvent id={id}/>
+                    </Modal>
         </div>
         )
     }
