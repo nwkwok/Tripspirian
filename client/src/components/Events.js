@@ -14,7 +14,7 @@ function Events(props) {
     const history = useHistory();
     const [event, setEvent] = useState([]);
     const [createEventIsOpen, setCreateEventIsOpen] = useState(false)
-    const [editEventIsOpen, setEditEventIsOpen] = useState(false)
+    const [editTripIsOpen, setEditTripIsOpen] = useState(false)
     const [trip, setTrip] = useState([]);
     const [tripName, setTripName] = useState(`${props.location.trip}`)
 
@@ -86,7 +86,7 @@ return (
             {trip.map(t => {
                 return (
                 <>
-                <h1>{t.trip_name} Summary <span onClick={() => setEditEventIsOpen(true)}>[Edit Trip]</span> </h1> 
+                <h1>{t.trip_name} Summary <span onClick={() => setEditTripIsOpen(true)}>[Edit Trip]</span> </h1> 
                 <ul key={t.trip_id}>
                     <li>Start Date: {t.start_date}</li>
                     <li>End Date: {t.end_date}</li>
@@ -131,7 +131,7 @@ return (
                         <CreateEvent user={props.user} />
                     </Modal>
 
-                    <Modal open={editEventIsOpen} onClose={() => setEditEventIsOpen(false)}>
+                    <Modal open={editTripIsOpen} onClose={() => setEditTripIsOpen(false)}>
                         <FormControl autoComplete="off" noValidate>
                             
                             <UpdateTrip />

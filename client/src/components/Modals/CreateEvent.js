@@ -67,7 +67,7 @@ export default function CreateEvent(props) {
           value={rating}
           onChange={(e) => setRating(e.target.value)}
         >
-
+          <option value="" disabled selected>Select Rating</option>
           <option value={1}>1</option>
           <option value={2}>2</option>
           <option value={3}>3</option>

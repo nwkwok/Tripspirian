@@ -33,9 +33,11 @@ function EditEvent(props) {
 
     return (
         <div>
-            <h1>Edit Event</h1>
-            {event.map(e => {
+             {event.map(e => {
                 return (
+                    <>
+                <h1>Edit {e.event_name}</h1>
+           
                 <ul key={e.event_id}>
                     <li>
                         Event: <p>{e.event_name}</p>
@@ -56,6 +58,7 @@ function EditEvent(props) {
                         Rating: <p>{e.rating}</p>
                     </li>
                 </ul>
+                </>
                 )
             })}
 
@@ -63,11 +66,11 @@ function EditEvent(props) {
                         variant="outlined" 
                         color="secondary"
                         onClick={() => setIsOpen(true)}>
-                        Add Trip
+                        Edit Event Info
                     </Button>
 
                     <Modal open={isOpen} onClose={() => setIsOpen(false)}>
-                        <UpdateEvent id={id}/>
+                        <UpdateEvent />
                     </Modal>
         </div>
         )
