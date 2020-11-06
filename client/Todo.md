@@ -18,19 +18,21 @@
             Inside of Trips Component:
                 ✅ Edit Trip Modal
                 ✅ Delete Trip
-                😡 Update trip
-                😡 Delete trip
+                ✅ Update trip
+                ✅ Delete trip
 
             Events Component:
             (For each individual trip -- be able to):
                 ✅ Get all events
                 ✅ Create a new event
-                😡 Update event
-                😡 Delete events
+                ✅ Update event
+                ✅ Delete events
                 
         Figure out logic for the TripHub
-            (how can people view and download other people's trips but not delete or edit them?)
-        
+                ✅ Get all trips
+                😡 Click Trip and go to that users Event page for that trip
+
+
         Create front end
 
         
