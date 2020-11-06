@@ -2,7 +2,7 @@
  import { toast } from 'react-toastify'
  import Trips from './Trips'
  import {Button, Container} from '@material-ui/core/';
-
+ import TripHub from './TripHub'
 
  const Dashboard = (props) => {
     const [name, setName] = useState("");
@@ -17,7 +17,7 @@
             })
 
             const parseResponse = await response.json()
-            console.log(parseResponse);
+            // console.log(parseResponse);
 
             setUserId(parseResponse.user.id)
             setName(parseResponse.user.f_name)
@@ -49,12 +49,16 @@
                 </section>
 
                     <Trips user={userId} />
+                    <TripHub />
 
                 <Button 
                     variant='contained' 
                     color='primary' 
                     onClick={e => logout(e)}
                     className='btn btn-primary'>Logout</Button>
+
+
+
             </Container>
          </Fragment>
      )
