@@ -42,6 +42,7 @@ console.log(allTrips);
                         tripStart={start_date}
                         tripEnd={end_date}
                         description={description}
+                        tripid={trip_id}
                         />
                 )
             })
