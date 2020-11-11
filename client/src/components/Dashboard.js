@@ -41,7 +41,7 @@
 
      return (
          <Fragment>
-             <Container maxWidth="sm">
+             <Container maxWidth="lg">
                 <section id="header">
                 <div>
                     <h1>Welcome to Tripspirian, {name}!</h1>

@@ -17,6 +17,13 @@
   color: #61dafb;
 }
 
+.cardContainer {
+  border: 1px solid red;
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

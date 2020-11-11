@@ -1,27 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { makeStyles, Card, CardContent, CardActions, Button } from '@material-ui/core/'
+import Card from '../components/Card'
+import '../../src/App.css'
 
-const useStyles = makeStyles({
-    root: {
-      minWidth: 275,
-    },
-    bullet: {
-      display: 'inline-block',
-      margin: '0 2px',
-      transform: 'scale(0.8)',
-    },
-    title: {
-      fontSize: 14,
-    },
-    pos: {
-      marginBottom: 12,
-    },
-  });
-  
 
 function TripHub() {
     const [allTrips, setAllTrips] = useState([])
-    const classes = useStyles();
 
     async function getAllUserData() {
         try {
@@ -42,27 +25,28 @@ useEffect(() => {
     getAllUserData();
 }, [])
 
+console.log(allTrips);
+
     return (
         
         <div>
             <h1>Trip Hub</h1>
-            <ul>
-            {allTrips.map(a => {
-                return (
-                    <Card className={classes.root} variant='outlined' key={a.trip_id}>
-                        <CardContent>
-                            <li >Trip name: {a.trip_name}</li>
-                            <li>Trip date: {a.start_date} - {a.end_date}</li>
-                        </CardContent>
-                        <CardActions>
-                            <Button size="small">Learn More</Button>
-                        </CardActions>
-                    </Card>
 
+            <div className='cardContainer'>
+            {allTrips.map(({trip_id, trip_name, start_date, end_date, description}) => {
+
+                return (
+                    <Card 
+                        key={trip_id}
+                        tripName={trip_name}
+                        tripStart={start_date}
+                        tripEnd={end_date}
+                        description={description}
+                        />
                 )
             })
             }
-            </ul>
+           </div>
        </div>
     )
 }

@@ -101,7 +101,7 @@ export default function CreateTrip(props) {
                 onChange={handleChange} 
                 />
           }
-              label="Make trip publicl?"
+              label="Make trip public?"
         />
 
         <Button 
