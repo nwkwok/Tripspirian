@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react'
 import { Link } from 'react-router-dom' 
 import { toast } from 'react-toastify'
+import classes from './Register.module.css'
 
 const Register = (props) => {
 
@@ -46,6 +47,7 @@ const Register = (props) => {
     }
     return (
         <Fragment>
+            <div className={classes.registerContainer}>
             <h1 className='text-center my-5'>Register</h1>
             <form onSubmit={onSubmitForm}>
                 <input 
@@ -79,6 +81,7 @@ const Register = (props) => {
                 <button className='btn btn-success btn-block'>Submit</button>
                 <span>Already have an account? </span><Link to='/login'>Login here</Link>
             </form>
+            </div>
         </Fragment>
     )
 }

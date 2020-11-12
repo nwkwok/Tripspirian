@@ -71,14 +71,6 @@ function Events(props) {
         }
     }
 
-    // const updateTripName = async () => {
-    //     try {
-    //         const response = await axios.put(`http://localhost:3000/event/${id}`)
-    //     } catch (err) {
-    //         console.error(err.message)
-    //     }
-    // }
-
 return (
         <>
         <div>

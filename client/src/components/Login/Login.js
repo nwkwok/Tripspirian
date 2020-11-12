@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import classes from './Login.module.css'
 
 const Login = (props) => {
     const [inputs, setInputs] = useState({
@@ -44,7 +45,7 @@ const Login = (props) => {
 
     return (
         <Fragment>
-            
+            <div className={classes.loginContainer}>
             <h1 className='text-center my-5'>Login</h1>
             <form onSubmit={onSubmitForm}>
                 <input 
@@ -65,6 +66,7 @@ const Login = (props) => {
                     className="btn btn-success btn-block">Submit</button>
                 <span>New to Tripspirian? </span><Link to='/register'>Register new user</Link>
             </form>
+            </div>
         </Fragment>
     )
 }

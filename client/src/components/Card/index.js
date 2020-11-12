@@ -1,9 +1,11 @@
 import React from 'react'
 import classes from './Card.module.css'
 import Button from '@material-ui/core/Button'
+import { Link } from 'react-router-dom'
 
 const handleClick = (tripid) => {
     console.log(tripid)
+
 }
 
 function Card({tripName, tripStart, tripEnd, description, tripid}) {
