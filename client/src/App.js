@@ -5,12 +5,12 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 //components
-import Dashboard from './components/Dashboard'
-import Login from './components/Login'
-import Register from './components/Register'
-import Trips from './components/Trips'
-import Events from './components/Events'
-import EditEvent from './components/EditEvent'
+import Dashboard from './components/Dashboard/Dashboard'
+import Login from './components/Login/Login'
+import Register from './components/Register/Register'
+import Trips from './components/Trips/Trips'
+import Events from './components/Events/Events'
+import EditEvent from './components/EditEvent/EditEvent'
 
 toast.configure();
 

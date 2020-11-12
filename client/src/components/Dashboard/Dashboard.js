@@ -1,8 +1,8 @@
  import React, { Fragment, useState, useEffect } from 'react'
  import { toast } from 'react-toastify'
- import Trips from './Trips'
+ import Trips from '../Trips/Trips'
  import {Button, Container} from '@material-ui/core/';
- import TripHub from './TripHub'
+ import TripHub from '../Triphub/TripHub'
 
  const Dashboard = (props) => {
     const [name, setName] = useState("");

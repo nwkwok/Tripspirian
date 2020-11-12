@@ -14,10 +14,12 @@ function Card({tripName, tripStart, tripEnd, description, tripid}) {
                 <h6>Start Date: {tripStart}</h6>
                 <h6>End Date: {tripEnd}</h6>
                 <h6>{description}</h6>
+                <div className={classes.buttonContainer}>
                 <Button 
                     color="primary"
                     onClick={(id) => handleClick(tripid)}
                     >View Trip</Button>
+                </div>
             </div>
     )
 }

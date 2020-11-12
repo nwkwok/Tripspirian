@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useParams, useHistory, useLocation } from 'react-router-dom'
 import Button from '@material-ui/core/Button';
-import Modal from './Modal'
-import CreateEvent from '../components/Modals/CreateEvent'
+import Modal from '../UI/Modal'
+import CreateEvent from '../UI/Modals/CreateEvent'
 import axios from 'axios';
 import { FormControl } from '@material-ui/core';
-import UpdateTrip from './Modals/UpdateTrip'
+import UpdateTrip from '../UI/Modals/UpdateTrip'
 
 function Events(props) {
     console.log(props.location)

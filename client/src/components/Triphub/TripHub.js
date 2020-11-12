@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import Card from '../components/Card'
-import '../../src/App.css'
+import Card from '../Card'
+import '../../App.css'
+import classes from './Triphub.modules.css'
 
 
 function TripHub() {

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import UpdateEvent from './Modals/UpdateEvent'
+import UpdateEvent from '../UI/Modals/UpdateEvent'
 import Button from '@material-ui/core/Button'
-import Modal from './Modal'
+import Modal from '../UI/Modal'
 
 
 function EditEvent(props) {
