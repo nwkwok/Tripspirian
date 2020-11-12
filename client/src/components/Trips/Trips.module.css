@@ -1,0 +1,44 @@
+.tripSection {
+    margin-top: 20px;
+}
+
+h1{ 
+    text-align: center;
+}
+.heading {
+    display: block;
+    text-align: center;
+}
+
+.tripContainer {
+    display: flex;
+    border: 1px solid lightgray;
+    margin: 10px;
+    transition: .2s
+}
+
+.tripContainer:hover, .tripContainer:active {
+    box-shadow: 3px 3px 3px rgba(0,0,0,.2);
+    transform: translateY(-5px);
+    transform: translateX(-5px);
+}
+
+.tripPhoto {
+    width:30%;
+    text-align: center;
+    padding-top: 10%;
+    vertical-align: middle;
+}
+
+.tripList {
+    list-style: none;
+}
+
+.addTripBtnContainer {
+    display: block;
+    text-align: center;
+}
+
+.addTripBtn {
+border-radius: 50%;
+}

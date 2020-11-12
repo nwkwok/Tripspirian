@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Card from '../Card'
 import '../../App.css'
-import classes from './Triphub.modules.css'
+import classes from './Triphub.module.css'
 
 
 function TripHub() {
@@ -31,9 +31,9 @@ console.log(allTrips);
     return (
         
         <div>
-            <h1>Trip Hub</h1>
+            <h1 className={classes.header}>Trip Hub</h1>
 
-            <div className='cardContainer'>
+            <div className={classes.cardContainer}>
             {allTrips.map(({trip_id, trip_name, start_date, end_date, description}) => {
 
                 return (

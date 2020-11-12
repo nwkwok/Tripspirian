@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import Button from '@material-ui/core/Button';
+import { Button, Icon } from '@material-ui/core/';
 import Modal from '../UI/Modal'
 import CreateTrip from '../UI/Modals/CreateTrip'
 import { useHistory, useLocation, Link } from 'react-router-dom';
 import axios from 'axios'
+import classes from './Trips.module.css'
 
 
 function Trips(props) {
@@ -50,30 +51,42 @@ function Trips(props) {
 
 
     return (
-        <div>
-            <h1>Your Trips</h1>
+        <div className={classes.tripSection}>
+            <h1 className={classes.heading}>Your Trips</h1>
                 <ul className="trips">
                 {
-                trip.map(t => {
+                trip.map(({trip_id, trip_name, start_date, end_date, description}) => {
+
+                
                     return (
-                        <li key={t.trip_id}>
+                    <div className={classes.tripContainer}>
+                        <div className={classes.tripPhoto}>
+                            Photo
+                        </div>
+                        <div>
+                        <li className={classes.tripList} key={trip_id}>
                             <Link to={{
-                                pathname:`events/${t.trip_id}`,
-                                trip: t.trip_name}}>{t.trip_name}</Link> 
+                                pathname:`events/${trip_id}`,
+                                trip: trip_name}}>{trip_name}</Link> 
+                                <h6>{start_date}</h6>
+                                <h6>{end_date}</h6>
+                                <h6>{description}</h6>
                             <Button 
                                 color="secondary"
-                                onClick={() => deleteTrip(t.trip_id)}>Delete Trip</Button>
+                                onClick={() => deleteTrip(trip_id)}>Delete Trip</Button>
                             </li>
+                        </div>
+                    </div>
                             )
                         })
                     }
                 </ul>   
-                <div>
-                    <Button 
+                <div className={classes.addTripBtnContainer}>
+                    <Button className={classes.addTripBtn} 
                         variant="outlined" 
-                        color="secondary"
+                        color="primary"
                         onClick={() => setIsOpen(true)}>
-                        Add Trip
+                        <h4>+</h4>
                     </Button>
 
                     <Modal open={isOpen} onClose={() => setIsOpen(false)}>

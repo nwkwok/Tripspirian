@@ -4,6 +4,11 @@
     align-items: top;
   }
 
-
+.header {
+  display: block;
+  text-align: center;
+  margin-top: 50px;
+  
+}
 
 
