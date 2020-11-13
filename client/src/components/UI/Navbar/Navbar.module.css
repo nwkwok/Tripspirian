@@ -1,0 +1,34 @@
+.container {
+    background: #eee;
+    width: 100%;
+    height: 25px;
+    display: flex;
+    justify-content: flex-end;
+    align-content: stretch;    
+    padding: 25px;
+}
+
+.logo{
+    margin-right: 17%;
+}
+
+.tripHub {
+    margin-right: 10%;
+}
+
+.menuItems {
+    margin-right: 5%;
+}
+
+a {
+    text-decoration: none;
+    margin: 10px;
+    color:black;
+}
+
+
+a:hover {
+    color: blue;
+    text-decoration: none;
+}
+
